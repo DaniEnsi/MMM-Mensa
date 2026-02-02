@@ -74,22 +74,6 @@ Module.register("MMM-Mensa", {
     const table = document.createElement("table");
     table.classList.add("mensa-table");
 
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-    const dishHeader = document.createElement("th");
-    dishHeader.textContent = "Gericht";
-    const emojiHeader = document.createElement("th");
-    emojiHeader.textContent = " ";
-    const priceHeader = document.createElement("th");
-    priceHeader.textContent = "Preis";
-
-    headerRow.appendChild(dishHeader);
-    headerRow.appendChild(emojiHeader);
-    headerRow.appendChild(priceHeader);
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-
-    const tbody = document.createElement("tbody");
     const filteredDishes = menuForCurrentDate.dishes.filter((dish) => {
       if (this.config.dishTypeFilter) {
         if (Array.isArray(this.config.dishTypeFilter)) {
@@ -117,30 +101,47 @@ Module.register("MMM-Mensa", {
       return true;
     });
 
-    filteredDishes.forEach((dish) => {
+    // Split into main dishes and desserts
+    const mainDishes = filteredDishes.filter(dish => !dish.dish_type.includes("Dessert"));
+    const desserts = filteredDishes.filter(dish => dish.dish_type.includes("Dessert"));
+
+    const tbody = document.createElement("tbody");
+
+    // Helper to render a dish row
+    const renderDish = (dish) => {
       const row = document.createElement("tr");
       const dishName = document.createElement("td");
       dishName.textContent = dish.name;
       const emoji = document.createElement("td");
-      const price = document.createElement("td");
 
       if (dish.labels && dish.labels.includes("MEAT")) {
-        emoji.textContent = "\ud83c\udf56";
+        emoji.textContent = "🍖";
       } else if (dish.labels && dish.labels.includes("VEGETARIAN")) {
-        emoji.textContent = "\ud83e\udd55";
+        emoji.textContent = "🥕";
       } else if (dish.labels && dish.labels.includes("VEGAN")) {
-        emoji.textContent = "\ud83e\uded1";
-      }
-
-      if (dish.prices && dish.prices.students && dish.prices.students.base_price) {
-        price.textContent = dish.prices.students.base_price.toFixed(2) + " €";
+        emoji.textContent = "🌱";
       }
 
       row.appendChild(dishName);
       row.appendChild(emoji);
-      row.appendChild(price);
       tbody.appendChild(row);
-    });
+    };
+
+    // Render main dishes (no header, just the dishes)
+    mainDishes.forEach(renderDish);
+
+    // Render desserts with header
+    if (desserts.length > 0) {
+      const headerRow = document.createElement("tr");
+      headerRow.className = "section-header";
+      const headerCell = document.createElement("td");
+      headerCell.colSpan = 2;
+      headerCell.textContent = "Desserts";
+      headerRow.appendChild(headerCell);
+      tbody.appendChild(headerRow);
+
+      desserts.forEach(renderDish);
+    }
 
     table.appendChild(tbody);
 
@@ -158,6 +159,7 @@ Module.register("MMM-Mensa", {
 
   getDom: function () {
     const wrapper = document.createElement("div");
+    wrapper.className = "mensa-wrapper";
     wrapper.appendChild(this.getMenuTable());
     return wrapper;
   }
