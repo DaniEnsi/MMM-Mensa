@@ -1,18 +1,18 @@
-.mensamuc-table {
+.mensa-table {
     width: 100%;
     font-size: 0.8em;
   }
   
-  .mensamuc-table th,
-  .mensamuc-table td {
+  .mensa-table th,
+  .mensa-table td {
     padding: 5px;
   }
   
-  .mensamuc-table th {
+  .mensa-table th {
     text-align: left;
   }
   
-  .mensamuc-table td {
+  .mensa-table td {
     border-top: 1px solid #cccccc1e;
   }
   
