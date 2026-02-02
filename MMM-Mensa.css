@@ -1,18 +1,74 @@
+.mensa-wrapper {
+  width: 100%;
+}
+
 .mensa-table {
-    width: 100%;
-    font-size: 0.8em;
-  }
-  
-  .mensa-table th,
-  .mensa-table td {
-    padding: 5px;
-  }
-  
-  .mensa-table th {
-    text-align: left;
-  }
-  
-  .mensa-table td {
-    border-top: 1px solid #cccccc1e;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mensa-table thead tr th {
+  padding: 2px 5px;
+  font-size: 0.7em;
+  font-weight: normal;
+  opacity: 0.5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mensa-table thead tr th:first-child {
+  text-align: left;
+}
+
+.mensa-table thead tr th:nth-child(2) {
+  text-align: center;
+  width: 30px;
+}
+
+.mensa-table thead tr th:last-child {
+  text-align: center;
+}
+
+.mensa-table td {
+  padding: 2px 5px;
+  vertical-align: middle;
+  font-size: 0.9em;
+}
+
+.mensa-table td:first-child {
+  text-align: left;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mensa-table td:last-child {
+  text-align: center;
+  width: 30px;
+  font-size: 0.85em;
+}
+
+.mensa-table tbody tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mensa-table tbody tr:first-child {
+  border-top: none;
+}
+
+.mensa-table tr.section-header td {
+  padding-top: 8px;
+  padding-bottom: 3px;
+  font-size: 0.75em;
+  font-weight: bold;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mensa-table tr.section-header:first-child td {
+  padding-top: 0;
+}
+
