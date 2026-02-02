@@ -1,15 +1,15 @@
-Module.register("MMM-Mensamuc", {
+Module.register("MMM-Mensa", {
   defaults: {
     canteen: "mensa-garching",
     dishTypeFilter: ["ALL"]
   },
 
   getHeader: function () {
-    return "Mensamuc";
+    return "Mensa";
   },
 
   getStyles: function () {
-    return ["MMM-Mensamuc.css"];
+    return ["MMM-Mensa.css"];
   },
 
   start: function () {
@@ -20,7 +20,7 @@ Module.register("MMM-Mensamuc", {
   },
 
   updateMenu: function () {
-    Log.info('%cMMM-Mensamuc updating Menu... ', 'background: #222; color: #ff9f6b');
+    Log.info('%cMMM-Mensa updating Menu... ', 'background: #222; color: #ff9f6b');
     const weekNumber = moment().format("WW");
     const year = moment().year();
     const url = `https://tum-dev.github.io/eat-api/${this.config.canteen}/${year}/${weekNumber}.json`;
@@ -33,17 +33,17 @@ Module.register("MMM-Mensamuc", {
         if (xhr.status === 200) { 
           try {
             const data = JSON.parse(xhr.responseText); 
-            Log.info('%cMMM-Mensamuc Menu loaded. ', 'background: #222; color: #bada55');
+            Log.info('%cMMM-Mensa Menu loaded. ', 'background: #222; color: #bada55');
             this.menu = data;
           } catch (error) {
-            Log.info(`%cMMM-Mensamuc Error: (${error})`, 'background: #222; color: #ff0000');
+            Log.info(`%cMMM-Mensa Error: (${error})`, 'background: #222; color: #ff0000');
             this.menu = null; 
           }
         } else if (xhr.status === 404) {
-          Log.info('%cMMM-Mensamuc TUM EAT API has not added this week yet.', 'background: #222; color: #ff0000');
+          Log.info('%cMMM-Mensa TUM EAT API has not added this week yet.', 'background: #222; color: #ff0000');
           this.menu = null;
         } else {
-          Log.info(`%cMMM-Mensamuc Error: (HTTP ${xhr.status})`, 'background: #222; color: #ff0000');
+          Log.info(`%cMMM-Mensa Error: (HTTP ${xhr.status})`, 'background: #222; color: #ff0000');
           this.menu = null;
         }
         this.updateDom();
@@ -72,7 +72,7 @@ Module.register("MMM-Mensamuc", {
     }
 
     const table = document.createElement("table");
-    table.classList.add("mensamuc-table");
+    table.classList.add("mensa-table");
 
     const thead = document.createElement("thead");
     const headerRow = document.createElement("tr");
