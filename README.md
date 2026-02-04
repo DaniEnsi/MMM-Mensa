@@ -1,8 +1,5 @@
 # MMM-Mensa
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![MagicMirror²](https://img.shields.io/badge/MagicMirror²-Module-blueviolet)](https://magicmirror.builders/)
-<img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"/>
 
 A MagicMirror² module to display daily menu information from Munich university canteens (Studierendenwerk München Oberbayern).
 
@@ -11,7 +8,7 @@ A MagicMirror² module to display daily menu information from Munich university 
 **Data provided by [eat-api by TUM-DEV](https://github.com/TUM-Dev/eat-api/)**
 
 <!-- TODO: Add screenshot -->
-<img width="400" alt="Module Screenshot" src="https://via.placeholder.com/400x200?text=Screenshot+Coming+Soon" />
+<img width="516" height="484" alt="image" src="https://github.com/user-attachments/assets/3255ce5d-8b96-4d03-bb5f-cf4f4112d145" />
 
 ## Features
 
@@ -143,4 +140,4 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
-**Original module by [wiesty](https://github.com/wiesty) • Data by [TUM-DEV](https://github.com/TUM-Dev/eat-api/) • Enhanced with ❤️ for the MagicMirror community**
+**Original module by [wiesty](https://github.com/wiesty) • Data by [TUM-DEV](https://github.com/TUM-Dev/eat-api/) • Enhanced by [dani](https://github.com/daniensi) for the MagicMirror community**
